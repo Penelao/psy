@@ -1,3 +1,10 @@
+@font-face {
+  font-family: Charm;
+  src: url("../public/fonts/Charm-Bold.ttf");
+  font-weight: bold;
+  font-style: normal;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -12,6 +19,99 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --main-color: rgb(8, 74, 123);
+}
+
+#root {
+  display: grid;
+  position: relative;
+  grid-template-rows: max-content 1fr max-content;
+  grid-template-columns: minmax(100px, 200px) 1fr max-content;
+  justify-content: stretch;
+  place-items: center;
+  row-gap: 2rem;
+}
+
+.hidden-header {
+  grid-column: 1 / 1;
+  background: #B4C8D7;
+  grid-row: 1 / 1;
+  width: 100%;
+  height: 100%;
+}
+header {
+  grid-column: 2 / -1;
+  font-family: Charm serif;
+  font-size: 2.2rem;
+  font-weight: bolder;
+  place-self: stretch;
+  background: #B4C8D7;
+  display: flex;
+  justify-content: space-between;
+  padding-block: 0.5rem;
+  padding-inline: 2rem;
+}
+
+h1 {
+  color: var(--main-color);
+}
+
+textarea {
+  resize: none;
+  outline: unset;
+  border: none;
+  box-sizing: border-box;
+  box-shadow: 0 1px black;
+  width: 100%;
+}
+textarea:focus, textarea:focus-visible {
+  box-sizing: border-box;
+  box-shadow: 0 2px var(--main-color);
+}
+
+header > i {
+  text-shadow: #dbc97d 1px 0 5px, #dbc97d -1px 0 5px, #dbc97d 0 1px 5px, #dbc97d 0 -1px 5px;
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  width: 100px;
+  grid-row: 1 / -1;
+  align-self: start;
+}
+
+.eye-of-the-tiger {
+  width: 100%;
+  clip-path: ellipse(98% 100% at left top);
+}
+.eye-of-the-tiger-wrapper {
+  position: absolute;
+  background-color: #6f848f;
+  grid-column: 1 / 1;
+  top: 0;
+  width: 100%;
+  clip-path: ellipse(100% 100% at left top);
+  min-height: 0;
+}
+
+.avatar {
+  align-self: start;
+  clip-path: ellipse(20px 50px);
+}
+.avatar img {
+  width: 200px;
+}
+
+main {
+  grid-column: 2 / -2;
+  justify-self: stretch;
+  padding: 1rem;
+  overflow-x: scroll;
+}
+
+footer {
+  grid-column: 1 / -1;
 }
 
 a {
@@ -25,8 +125,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -53,6 +151,34 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+li {
+  list-style-image: url(assets/star.svg);
+}
+li::marker {
+  font-size: 2em;
+}
+
+.icon-btn {
+  all: unset;
+  display: block;
+  padding-block: 0.2rem;
+  padding-left: 0.3rem;
+  padding-right: 0.1rem;
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+}
+
+.icon-btn:hover {
+  background-color: rgb(0, 0, 0, 8%);
+}
+
+.icon-btn:focus {
+  outline: 1px auto var(--main-color);
+  background-color: rgb(0, 0, 0, 8%);
 }
 
 @media (prefers-color-scheme: light) {
