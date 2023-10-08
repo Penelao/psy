@@ -24,6 +24,7 @@
 
 #root {
   background-color: white;
+  color: black;
   display: grid;
   position: relative;
   grid-template-areas: "eye h h"
