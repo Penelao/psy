@@ -23,16 +23,28 @@
 }
 
 #root {
+  background-color: white;
   display: grid;
   position: relative;
   grid-template-areas: "eye h h"
                        "eye main photo"
                        "eye main x"
                        "footer footer footer";
-  grid-template-columns: minmax(100px, 200px) 1fr max-content;
+  grid-template-columns: minmax(100px, min(20%, 200px)) 1fr max-content;
   justify-content: stretch;
   place-items: center;
   row-gap: 2rem;
+}
+
+@media all and (max-width: 768px){
+  #root {
+    grid-template-areas: "eye h h"
+                       "photo photo main "
+                       "x x main"
+                       "footer footer footer";
+    grid-template-columns: minmax(70px, min(10%, 200px)) max-content 1fr;
+  }
+
 }
 
 .hidden-header {
@@ -45,7 +57,7 @@
 header {
   grid-area: h;
   font-family: Charm serif;
-  font-size: 2.2rem;
+  font-size: calc(1.5rem + 0.390625vw);;
   font-weight: bolder;
   place-self: stretch;
   background: #B4C8D7;
