@@ -1,8 +1,10 @@
-import {useForm} from "react-hook-form";
+import {useForm, useWatch} from "react-hook-form";
 import {useMutation, useQueryClient} from "@tanstack/react-query";
 import {insertPredictions} from "../db/api.ts";
 import {Predictions} from "../db/types.ts";
 import {SendHorizontal} from "lucide-react";
+import {useEffect} from "react";
+import {useFurbyContex} from "../furbyContext.tsx";
 
 
 interface AddPredictionForm {
@@ -10,7 +12,7 @@ interface AddPredictionForm {
 }
 
 const AddPrediction: React.FC = () => {
-    const {register, handleSubmit, reset, formState, getFieldState} = useForm<AddPredictionForm>({
+    const {register, control, handleSubmit, reset, formState, getFieldState} = useForm<AddPredictionForm>({
         mode: "onSubmit",
         defaultValues: {
             value: "",
@@ -23,7 +25,12 @@ const AddPrediction: React.FC = () => {
             void qk.invalidateQueries(["predictions"]);
             reset();
         }
-    })
+    });
+    const {toggleFurby} = useFurbyContex();
+    const value = useWatch({control, name: "value"});
+    useEffect(() => {
+        toggleFurby(value === "666")
+    }, [toggleFurby, value])
 
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     return <form onSubmit={handleSubmit(({value}) => {
