@@ -22,13 +22,16 @@ function App() {
                 <img style={{
                     height: "100%",
                     display: "block",
+                    zIndex: 2,
+                    position: "inherit",
+                    width: "100%",
                 }} src="/img/img.png" alt="nikky"/>
                 <img
                     style={{
                         position: "absolute",
                         top: 0,
                         left: "-10%",
-                        zIndex: -1,
+                        zIndex: 1,
                         height: "90%"
                     }}
                     src="/img/nikky-cropped.png" alt="nikky"/>

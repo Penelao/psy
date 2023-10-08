@@ -34,6 +34,7 @@
   justify-content: stretch;
   place-items: center;
   row-gap: 2rem;
+  height: 100%;
 }
 
 @media all and (max-width: 768px){
@@ -42,7 +43,7 @@
                        "photo photo main "
                        "x x main"
                        "footer footer footer";
-    grid-template-columns: minmax(70px, min(10%, 200px)) max-content 1fr;
+    grid-template-columns: minmax(70px, min(10%, 200px)) 0.1fr 1fr;
   }
 
 }
@@ -120,9 +121,7 @@ header > i {
   position: relative;
   /*clip-path: ellipse(20px 50px);*/
 }
-.avatar img {
-  /*width: 200px;*/
-}
+
 
 main {
   grid-area: main;
