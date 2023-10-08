@@ -10,7 +10,13 @@ interface AddPredictionForm {
 }
 
 const AddPrediction: React.FC = () => {
-    const {register, handleSubmit, reset} = useForm<AddPredictionForm>()
+    const {register, handleSubmit, reset, formState, getFieldState} = useForm<AddPredictionForm>({
+        mode: "onSubmit",
+        defaultValues: {
+            value: "",
+        }
+    })
+    const {invalid} = getFieldState("value", formState);
     const qk = useQueryClient();
     const {mutate} = useMutation((d: Predictions) => insertPredictions(d), {
         onSuccess: () => {
@@ -25,7 +31,8 @@ const AddPrediction: React.FC = () => {
     })}>
         <div style={{position: "relative", width: "clamp(15rem, 100%, 800px)"}}>
             <textarea
-                {...register("value", {required: true, min: 10})}
+                {...register("value", {required: "Requ", minLength: 10})}
+                {...(invalid ? {required: true, minLength: 10} : {})}
                 rows={4}
                 placeholder="Write your prediction"
                 style={{paddingRight: "2rem"}}
@@ -42,6 +49,8 @@ const AddPrediction: React.FC = () => {
                 <SendHorizontal />
             </button>
         </div>
+        {invalid && <span style={{color: "red"}}>I furby sono arrabbiati con te</span>}
+
 
     </form>
 }

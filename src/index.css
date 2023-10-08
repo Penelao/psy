@@ -25,7 +25,10 @@
 #root {
   display: grid;
   position: relative;
-  grid-template-rows: max-content 1fr max-content;
+  grid-template-areas: "eye h h"
+                       "eye main photo"
+                       "eye main x"
+                       "footer footer footer";
   grid-template-columns: minmax(100px, 200px) 1fr max-content;
   justify-content: stretch;
   place-items: center;
@@ -40,7 +43,7 @@
   height: 100%;
 }
 header {
-  grid-column: 2 / -1;
+  grid-area: h;
   font-family: Charm serif;
   font-size: 2.2rem;
   font-weight: bolder;
@@ -67,6 +70,9 @@ textarea {
 textarea:focus, textarea:focus-visible {
   box-sizing: border-box;
   box-shadow: 0 2px var(--main-color);
+}
+textarea:invalid {
+  box-shadow: 0 2px red;
 }
 
 header > i {
@@ -96,22 +102,25 @@ header > i {
 }
 
 .avatar {
+  overflow: hidden;
+  grid-area: photo;
   align-self: start;
-  clip-path: ellipse(20px 50px);
+  position: relative;
+  /*clip-path: ellipse(20px 50px);*/
 }
 .avatar img {
-  width: 200px;
+  /*width: 200px;*/
 }
 
 main {
-  grid-column: 2 / -2;
+  grid-area: main;
   justify-self: stretch;
   padding: 1rem;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 footer {
-  grid-column: 1 / -1;
+  grid-area: footer;
 }
 
 a {

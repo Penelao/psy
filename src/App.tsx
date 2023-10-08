@@ -19,7 +19,19 @@ function App() {
                 <PredictionsPage />
             </main>
             <div className="avatar">
-                <img width={100} src="/img/nikky.png" alt="nikky"/>
+                <img style={{
+                    height: "100%",
+                    display: "block",
+                }} src="/img/img.png" alt="nikky"/>
+                <img
+                    style={{
+                        position: "absolute",
+                        top: 0,
+                        left: "-10%",
+                        zIndex: -1,
+                        height: "90%"
+                    }}
+                    src="/img/nikky-cropped.png" alt="nikky"/>
             </div>
             <footer>
                 Corporate parties and readings call Psychic Nikki (XXX) 691-4200.
